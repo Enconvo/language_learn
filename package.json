@@ -1,0 +1,115 @@
+{
+  "$schema": "https://enconvo.com/schemas/extension.json",
+  "name": "language_learn",
+  "version": "1.1.0",
+  "description": "Language Learn Tools",
+  "title": "Language Learn Tools",
+  "icon": "icon.png",
+  "author": "ysnows",
+  "license": "MIT",
+  "categories": [
+    "Language Learn"
+  ],
+  "type": "module",
+  "commands": [
+    {
+      "name": "analyze",
+      "title": "Analyze Grammar",
+      "description": "Analyze The Text Grammar",
+      "mode": "no-view",
+      "aiPlugin": true,
+      "params": [
+        {
+          "name": "text",
+          "description": "The text to be analyzed.",
+          "type": "string",
+          "required": true,
+          "default": ""
+        }
+      ],
+      "preferences": [
+        {
+          "name": "responseLanguage",
+          "description": "The language used to force LLM to respond",
+          "type": "dropdown",
+          "required": false,
+          "title": "Response Language",
+          "default": "auto",
+          "data": [
+            {
+              "title": "auto",
+              "value": "auto"
+            },
+            {
+              "title": "中文简体",
+              "value": "中文简体"
+            },
+            {
+              "title": "中文繁体",
+              "value": "中文繁体"
+            },
+            {
+              "title": "English",
+              "value": "English"
+            },
+            {
+              "title": "Japanese",
+              "value": "Japanese"
+            },
+            {
+              "title": "Korean",
+              "value": "Korean"
+            },
+            {
+              "title": "French",
+              "value": "French"
+            },
+            {
+              "title": "German",
+              "value": "German"
+            },
+            {
+              "title": "Spanish",
+              "value": "Spanish"
+            }
+          ]
+        },
+        {
+          "name": "auto_audio_play",
+          "description": "Auto play result content",
+          "type": "checkbox",
+          "required": false,
+          "title": "Auto Audio Play",
+          "default": false
+        },
+        {
+          "name": "llm",
+          "description": "The model used to generate responses",
+          "type": "extension",
+          "required": false,
+          "default": "default",
+          "title": "LLM Model"
+        }
+      ]
+    }
+  ],
+  "dependencies": {
+    "@enconvo/api": "^0.1.1",
+    "@langchain/core": "^0.1.52"
+  },
+  "devDependencies": {
+    "@types/node": "^18.17.14",
+    "eslint": "^8.33.0",
+    "prettier": "^2.8.3",
+    "tsup": "^7.2.0",
+    "typescript": "^5.0.4"
+  },
+  "scripts": {
+    "lint": "eslint src",
+    "lint:fix": "npm run lint --fix",
+    "format": "prettier --write \"**/*.ts\"",
+    "format:check": "prettier --list-different \"**/*.ts\"",
+    "build": "enconvo",
+    "dev": "enconvo --dev"
+  }
+}
